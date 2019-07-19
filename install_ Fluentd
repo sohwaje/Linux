@@ -1,0 +1,21 @@
+[1]
+# centos6.x에서는 curl 업데이트
+# vim /etc/yum.repos.d/city-fan.repo
+[CityFan]
+name=City Fan Repo
+baseurl=http://www.city-fan.org/ftp/contrib/yum-repo/rhel$releasever/$basearch/
+enabled=1
+gpgcheck=0
+# yum repolist
+# yum install -y libnghttp2
+# yum install -y curl
+
+[2] Fluentd 설치(td-agent)
+curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent3.sh | sh
+...
+Installation completed. Happy Logging!
+
+[3] root 계정으로 실행 권한을 변경
+# vim /etc/init.d/td-agent
+TD_AGENT_USER=root
+TD_AGENT_GROUP=root
