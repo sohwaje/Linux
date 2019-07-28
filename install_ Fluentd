@@ -19,4 +19,5 @@ Installation completed. Happy Logging!
 # vim /etc/init.d/td-agent
 TD_AGENT_USER=root
 TD_AGENT_GROUP=root
-- CentOS Linux release 7.4.1708 (Core)에서 실행 권한을 변경해도 퍼미션 문제가 발생하는 경우가 있다. 타겟 로그가 /home 디렉토리 하위라면, chmod 755 /home으로 퍼미션을 변경한다.
+- CentOS Linux release 7.4.1708 (Core)에서 실행 권한을 변경해도 퍼미션 문제가 발생하는 경우가 있다. 
+- 타겟 로그가 /home 디렉토리 하위라면, chmod 755 /home으로 퍼미션을 변경한다.
