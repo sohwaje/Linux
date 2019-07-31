@@ -1,0 +1,23 @@
+steps:
+- name: 'gcr.io/cloud-builders/mvn'
+  args: ['install']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/spring-boot-container-248305/spring-boot-container-test-v2', '.']
+  timeout: 500s
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/spring-boot-container-248305/spring-boot-container-test-v2']
+- name: 'gcr.io/cloud-builders/kubectl'
+  args:
+  - set
+  - image
+  - deployment/spring-boot-container  # 어플리케이션에 들어갈 이름
+  # spring-boot-container-248305는 프로젝트 이름이다.
+  - spring-boot-container-test-sha256=gcr.io/spring-boot-container-248305/spring-boot-container-test-v2
+  - -n
+  - spring-boot # 네임스페이스에 들어갈 이름
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-northeast1-b' # 배포 지역
+  - 'CLOUDSDK_CONTAINER_CLUSTER=spring-boot-container-cluster'  # 클러스터 이름
+options:
+  machineType: 'N1_HIGHCPU_8' # HIGHCPU로 빌드 스피드 업
+timeout: 1000s # 빌드 자체에 대한 타임 아웃
