@@ -1,6 +1,6 @@
 #!/bin/sh
 #[1] TOMCAT V8에 최적화
-DATE=`date +%Y%m%d%H%M%S`
+export DATE=`date +%Y%m%d%H%M%S`
 
 #[2] TOMCAT Port & values
 export JAVA_OPTS="$JAVA_OPTS -Dtomcat.port.shutdown=8005"
