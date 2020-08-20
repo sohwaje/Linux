@@ -1,0 +1,14 @@
+<!-- SNI 방식(defaultSSLHostConfigName를 설정함) -->
+<Connector port="443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+           maxThreads="150" SSLEnabled="true" defaultSSLHostConfigName="default-example.com">
+    <SSLHostConfig hostName="default-example.com">
+        <Certificate certificateKeystoreFile="/home/sigongweb/.key/keystore"
+                     certificateKeystorePassword="sigong3440"
+                     certificateKeyAlias="alias" type="RSA" />
+    </SSLHostConfig>
+    <SSLHostConfig hostName="example.com">
+        <Certificate certificateKeystoreFile="/home/sigongweb/.key/keystore"
+                     certificateKeystorePassword="sigong3440"
+                     certificateKeyAlias="alias" type="RSA" />
+    </SSLHostConfig>
+</Connector>
